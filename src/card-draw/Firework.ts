@@ -3,7 +3,7 @@ import confetti from "canvas-confetti";
 export function Firework() {
   let duration = 15 * 100;
   let animationEnd = Date.now() + duration;
-  let defaults = { startVelocity: 30, spread: 360, ticks: 100, zIndex: 0 };
+  let defaults = { startVelocity: 30, spread: 360, ticks: 100, zIndex: 9999 };
   //  startVelocity: 범위, spread: 방향, ticks: 갯수
 
   function randomInRange(min: any, max: any) {

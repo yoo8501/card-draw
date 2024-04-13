@@ -4,7 +4,7 @@ import { Outlet } from "react-router-dom";
 const Wrap = styled.div`
   margin: 16px;
   padding: 16px;
-  height: calc(100vh - 32px);
+  min-height: calc(100vh - 32px);
   background-color: gray;
 `;
 export default function Layout({ children }: any) {

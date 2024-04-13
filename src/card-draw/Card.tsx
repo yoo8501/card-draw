@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+
 const Wrap: any = styled.div`
   position: relative;
   cursor: pointer;
@@ -13,7 +14,7 @@ const Wrap: any = styled.div`
   } */
   ${(props: any) => {
     if (props.opened) {
-      return `
+        return `
       // transition: all 0.5s;
       // transform-style: preserve-3d;
       // perspective: 1100px;
@@ -21,7 +22,7 @@ const Wrap: any = styled.div`
       animation: card-rotate forwards 0.5s linear;
       `;
     } else {
-      return `
+        return `
       @keyframes card-expansion {
         from {
           transform: scale(1);
@@ -36,7 +37,7 @@ const Wrap: any = styled.div`
         }
       `;
     }
-  }}
+}}
   @keyframes card-rotate {
     from {
       transform: rotateY(0deg) scale(1.2);
@@ -63,40 +64,41 @@ const Back = styled.img`
   z-index: 10;
   backface-visibility: hidden;
 `;
-export default function Card({ card, handleCard }: CardState) {
-  const getCard = (opened, target) => {
-    if (!target) {
-      return (
-        <>
-          <Front src="/front.png" alt="" />
-          <Back
-            src="/back.png"
-            alt=""
-            onClick={() => {
-              handleCard({ opened: true, target: card.target }, card.idx);
-            }}
-          />
-        </>
-      );
-    } else if (target) {
-      return (
-        <>
-          <Front src="/front-target.png" alt="" />
-          <Back
-            src="/back.png"
-            alt=""
-            onClick={() => {
-              handleCard({ opened: true, target: card.target }, card.idx);
-            }}
-          />
-        </>
-      );
-    }
-  };
-  return <Wrap opened={card.opened}>{getCard(card.opened, card.target)}</Wrap>;
+export default function Card({card, handleCard}: CardState) {
+    const getCard = (opened: any, target: any) => {
+        if (!target) {
+            return (
+                <>
+                    <Front src="/front.png" alt=""/>
+                    <Back
+                        src="/back.png"
+                        alt=""
+                        onClick={() => {
+                            handleCard({opened: true, target: card.target}, card.idx);
+                        }}
+                    />
+                </>
+            );
+        } else if (target) {
+            return (
+                <>
+                    <Front src="/front-target.png" alt=""/>
+                    <Back
+                        src="/back.png"
+                        alt=""
+                        onClick={() => {
+                            handleCard({opened: true, target: card.target}, card.idx);
+                        }}
+                    />
+                </>
+            );
+        }
+    };
+    return <Wrap opened={card.opened}>{getCard(card.opened, card.target)}</Wrap>;
 }
 
 interface CardState {
-  card: any;
-  handleCard: any;
+    card: any,
+    handleCard: any,
+    key?: number
 }
